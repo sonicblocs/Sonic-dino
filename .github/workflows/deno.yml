@@ -1,0 +1,57 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# This workflow will install Deno then run `deno lint` and `deno test`.
+# For more information see: https://github.com/denoland/setup-deno
+
+name: Sonic Dino Extension CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      # Cache JS/TS dependencies if you add any
+      - name: Cache Deno dependencies
+        run: deno cache $(git ls-files '*.ts' '*.js' || true)
+
+      # Lint your JS files
+      - name: Lint project
+        run: deno lint
+
+      # Format check (optional)
+      - name: Format check
+        run: deno fmt --check
+
+      # Bundle runner.js into a single file (optional)
+      - name: Bundle extension script
+        run: deno bundle runner.js dist/runner.bundle.js
+
+      # Archive extension folder for download
+      - name: Package extension
+        run: |
+          mkdir -p dist
+          cp manifest.json index.html style.css dist/
+          cp game.png dist/
+          cp dist/runner.bundle.js dist/
+      - name: Upload extension artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sonic-dino-extension
+          path: dist/
