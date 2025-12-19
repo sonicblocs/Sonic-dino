@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  background: #f7f7f7;
+}
+#game-container {
+  width: 600px;
+  height: 150px;
+  margin: 50px auto;
+  position: relative;
+}
+canvas {
+  display: block;
+}
