@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "Sonic Dino Mod",
+  "version": "1.0",
+  "description": "Replace Chrome Dino with Sonic using a sprite sheet.",
+  "icons": {
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://chromedino.com/*",
+        "chrome://dino/*"
+      ],
+      "js": ["sonic.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
+{
+  "manifest_version": 3,
+  "name": "Sonic Dino Runner",
+  "version": "1.0",
+  "description": "Play the Chrome Dino game with Sonic sprites.",
+  "icons": {
+    "128": "sonic.png"
+  },
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": []
+}
+{
+  "manifest_version": 3,
+  "name": "Sonic Dinosaur",
+  "version": "1.0",
+  "description": "Play the Chrome Dino game with Sonic sprites.",
+  "icons": {
+    "128": "sonic.png"
+  },
+  "action": {
+    "default_popup": "index.html"
+  }
+}
+{
+  "manifest_version": 3,
+  "name": "Sonic Dinosaur",
+  "version": "1.0",
+  "description": "Play the Chrome Dino game with Sonic sprites.",
+  "icons": {
+    "128": "game.png"
+  },
+  "action": {
+    "default_popup": "index.html"
+  }
+}
+{
+  "manifest_version": 3,
+  "name": "Sonic Dinosaur",
+  "version": "1.0",
+  "description": "Play the Chrome Dino game with Sonic sprites.",
+  "icons": {
+    "128": "game.png"
+  },
+  "action": {
+    "default_popup": "index.html"
+  }
+}
